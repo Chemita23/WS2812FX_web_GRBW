@@ -3,7 +3,7 @@ Webinterface for GRBW WS2812FX
 
 This code is optimized for ESP32 DEV MODULE
 
-Work with WS2812B GRBW strips led
+Work with WS2812B GRBW (White & RGB) strips led
 
 This code is based in the work of https://github.com/kitesurfer1404/WS2812FX
 
