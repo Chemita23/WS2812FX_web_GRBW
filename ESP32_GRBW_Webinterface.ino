@@ -19,13 +19,13 @@
 extern const char index_html[];
 extern const char main_js[];
 int led = 2;
-#define WIFI_SSID "yourSSID"
-#define WIFI_PASSWORD "yourpass"
+#define WIFI_SSID "MOVISTAR_643A"
+#define WIFI_PASSWORD "Mateos23"
 
-#define STATIC_IP                     
+#define STATIC_IP                       // uncomment for static IP, set IP below
 #ifdef STATIC_IP
-  IPAddress ip(192,168,1,252);   // USE IP in your range
-  IPAddress gateway(192,168,1,1); // IP of your router
+  IPAddress ip(192,168,1,252);
+  IPAddress gateway(192,168,1,1);
   IPAddress subnet(255,255,255,0);
 #endif
 
@@ -33,7 +33,7 @@ int led = 2;
 #define min(a,b) ((a)<(b)?(a):(b))
 #define max(a,b) ((a)>(b)?(a):(b))
 
-#define LED_PIN 23                       // PIN DATA OF STRIP LED
+#define LED_PIN 23                       // ESP8266 = 14, 7 = GPIO13, 2=GPIO2
 #define LED_COUNT 117
 
 #define WIFI_TIMEOUT 40000              // checks WiFi every ...ms. Reset after this time, if WiFi cannot reconnect.
@@ -222,30 +222,23 @@ void srv_handle_set() {
       uint8_t tmp = (uint8_t) strtol(server.arg(i).c_str(), NULL, 10);
       ws2812fx.setMode(tmp % ws2812fx.getModeCount());
       Serial.print("mode is "); Serial.println(ws2812fx.getModeName(ws2812fx.getMode()));
+      Serial.print("mode is "); Serial.println(tmp % ws2812fx.getModeCount());
     }
 
     if(server.argName(i) == "b") {
-      if(server.arg(i)[0] == '-') {
-        ws2812fx.setBrightness(ws2812fx.getBrightness() * 0.8);
-      } else if(server.arg(i)[0] == ' ') {
-        ws2812fx.setBrightness(min(max(ws2812fx.getBrightness(), 5) * 1.2, 255));
-      } else { // set brightness directly
         uint8_t tmp = (uint8_t) strtol(server.arg(i).c_str(), NULL, 10);
         ws2812fx.setBrightness(tmp);
-      }
+
       Serial.print("brightness is "); Serial.println(ws2812fx.getBrightness());
     }
 
-    if(server.argName(i) == "s") {
-      if(server.arg(i)[0] == '-') {
-        ws2812fx.setSpeed(max(ws2812fx.getSpeed(), 5) * 1.2);
-      } else if(server.arg(i)[0] == ' ') {
-        ws2812fx.setSpeed(ws2812fx.getSpeed() * 0.8);
-      } else {
+  
+
+        if(server.argName(i) == "x") {
         uint16_t tmp = (uint16_t) strtol(server.arg(i).c_str(), NULL, 10);
         ws2812fx.setSpeed(tmp);
-      }
-      Serial.print("speed is "); Serial.println(ws2812fx.getSpeed());
+        Serial.print("speedx tmp is "); Serial.println(tmp);
+        Serial.print("speedx is "); Serial.println(ws2812fx.getSpeed());
     }
 
     if(server.argName(i) == "a") {
