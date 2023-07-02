@@ -19,13 +19,13 @@
 extern const char index_html[];
 extern const char main_js[];
 int led = 2;
-#define WIFI_SSID "MOVISTAR_643A"
-#define WIFI_PASSWORD "Mateos23"
+#define WIFI_SSID "yourSSID"
+#define WIFI_PASSWORD "yourpass"
 
-#define STATIC_IP                       // uncomment for static IP, set IP below
+#define STATIC_IP                     
 #ifdef STATIC_IP
-  IPAddress ip(192,168,1,252);
-  IPAddress gateway(192,168,1,1);
+  IPAddress ip(192,168,1,252);   // USE IP in your range
+  IPAddress gateway(192,168,1,1); // IP of your router
   IPAddress subnet(255,255,255,0);
 #endif
 
@@ -33,7 +33,7 @@ int led = 2;
 #define min(a,b) ((a)<(b)?(a):(b))
 #define max(a,b) ((a)>(b)?(a):(b))
 
-#define LED_PIN 23                       // ESP8266 = 14, 7 = GPIO13, 2=GPIO2
+#define LED_PIN 23                       // PIN DATA OF STRIP LED
 #define LED_COUNT 117
 
 #define WIFI_TIMEOUT 40000              // checks WiFi every ...ms. Reset after this time, if WiFi cannot reconnect.
