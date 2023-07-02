@@ -19,6 +19,6 @@ You can search for <b>WS2812FX</b> in the Arduino IDE Library Manager or install
 
 This code is based in the work of Harm Aldick https://github.com/kitesurfer1404/WS2812FX
 
-
-![grbw_ws2812](https://github.com/Chemita23/WS2812FX_web_GRBW/assets/108198600/0a787266-7701-4da5-af57-c39b3e8644bd)
 ![grbw_ws2812](https://github.com/Chemita23/WS2812FX_web_GRBW/assets/108198600/acbf943d-a319-4c2a-bee3-7d0f4af4eba8)
+
+Thanks and enjoy it...
