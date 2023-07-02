@@ -12,8 +12,8 @@ Is mandatory the library WS2812FX
 You can search for <b>WS2812FX</b> in the Arduino IDE Library Manager or install the latest (or development) version manually:
 
 <ul dir="auto">
-<li>Install the famous <a href="https://github.com/adafruit/Adafruit_NeoPixel">Adafruit NeoPixel library</a> (v1.1.7 or newer)</li>
-<li>Install the library <a href="https://github.com/kitesurfer1404/WS2812FX">WS2812FX</a></li>
+<li>Install the famous <a href="https://github.com/adafruit/Adafruit_NeoPixel" target="_BLANK">Adafruit NeoPixel library</a> (v1.1.7 or newer)</li>
+<li>Install the library <a href="https://github.com/kitesurfer1404/WS2812FX" target="_BLANK">WS2812FX</a></li>
 <li>Extract to your Arduino libraries directory.</li>
 </ul>
 
