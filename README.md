@@ -1,5 +1,5 @@
 # WS2812FX_web_GRBW
-Webinterface for GRBW WS2812FX
+Webinterface for GRBW WS2812FX for Arduino
 
 This code is optimized for ESP32 DEV MODULE
 
