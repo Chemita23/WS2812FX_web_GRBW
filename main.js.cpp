@@ -167,9 +167,11 @@ function onBrightness(event, dir) {
   submitVal('b', dir);
 }
 
-function onSpeed(event, dir) {
+
+
+function onSped(event, dir) {
   event.preventDefault();
-  submitVal('s', dir);
+  submitVal('x', dir);
 }
 
 function onAuto(event, dir) {
