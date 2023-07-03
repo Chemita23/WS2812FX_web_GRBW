@@ -9,11 +9,10 @@ char main_js[] PROGMEM = R"=====(
 
 var activeButton = null;
 var colorCanvas = null;
-var white = 0;
-var r = 0;
-var g = 0;
+var white = 250;
+var r = 180;
+var g = 80;
 var b = 0;
-var col = 0;
 
 window.addEventListener('DOMContentLoaded', (event) => {
   // init the canvas color picker
@@ -61,7 +60,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
     document.getElementById('blue-value').value = b;
 
     selectedColor = white * 16777216 + imageData.data[0] * 65536 + imageData.data[1] * 256 + imageData.data[2];
-    col = imageData.data[0] * 65536 + imageData.data[1] * 256 + imageData.data[2];
     submitVal('c', selectedColor);
   });
 
@@ -87,7 +85,6 @@ function onColor(event, color) {
   var match = color.match(/rgb\(([0-9]*),([0-9]*),([0-9]*),([0-9]*)\)/);
   if(match) {
     var colorValue = Number(match[1]) * 16777216 + Number(match[2]) * 65536 + Number(match[3]) * 256 + Number(match[4]);
-    col = Number(match[2]) * 65536 + Number(match[3]) * 256 + Number(match[4]);
     white = Number(match[1]);
     r = Number(match[2]);
     g = Number(match[3]);
@@ -145,9 +142,9 @@ function onWhite(event, color) {
   var match = color.match(/([0-9]*)/);
   if(match) {
     white = Number(match[1]);
-    console.log('White: ' + match[1]);
-    var colorValue = Number(match[1]) * 16777216 + col;
-    var selectedColor = 'rgb(' + white + ',' + r + ',' + g + ',' + b + ')'; 
+    console.log('White: ' + match[1] + "   R: " + r + "   G: " + g + "   B: " + b);
+    var colorValue = Number(match[1]) * 16777216  + r * 65536 + g * 256 + b;
+    var selectedColor = 'rgb(' + Number(match[1]) + ',' + r + ',' + g + ',' + b + ')'; 
     document.getElementById('color-value').value = selectedColor;
     submitVal('c', colorValue);
   }
@@ -159,11 +156,13 @@ function onMode(event, mode) {
   if(activeButton) activeButton.classList.remove('active')
   activeButton = event.target;
   activeButton.classList.add('active');
+  console.log('Mode: ' + mode);
   submitVal('m', mode);
 }
 
 function onBrightness(event, dir) {
   event.preventDefault();
+  console.log('Brigh: ' + dir);
   submitVal('b', dir);
 }
 
@@ -171,6 +170,7 @@ function onBrightness(event, dir) {
 
 function onSped(event, dir) {
   event.preventDefault();
+  console.log('Delay: ' + dir);
   submitVal('x', dir);
 }
 
