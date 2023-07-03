@@ -41,8 +41,8 @@ int led = 2;
 #define min(a,b) ((a)<(b)?(a):(b))
 #define max(a,b) ((a)>(b)?(a):(b))
 
-#define LED_PIN 23   // ESP8266 = 14, 7 = GPIO13, 2=GPIO2
-#define LED_COUNT 117
+#define LED_PIN 23   // Pin for DATA WS2812 - ESP8266 = 14, 7 = GPIO13, 2=GPIO2
+#define LED_COUNT 117 // Number of totals leds in strip
 
 #define WIFI_TIMEOUT 40000  // checks WiFi every ...ms. Reset after this time, if WiFi cannot reconnect.
 #define HTTP_PORT 80
