@@ -5,6 +5,7 @@ char index_html[] PROGMEM = R"=====(
 <head>
   <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
   <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+  <link rel="shortcut icon" type="image/x-icon" href="https://www.w3schools.com/favicon.ico"/>
   <title>WS2812FX Control</title>
   <script type='text/javascript' src='main.js'></script>
 
@@ -85,13 +86,13 @@ char index_html[] PROGMEM = R"=====(
       <div>&nbsp;&nbsp;RGB <input type='text' id='color-value' oninput='onColor(event, this.value)'/></div>
 <br />
   
-      <div style="color:#fff"><br/>White <input type='range'  id='white-value' min='0' max='127' step='1' value='0' style='width: 200px;' onchange='onWhite(event, this.value)'><br/></div> <br/>
-      <div style="color:red"><br/>Red <input type='range'  id='red-value' min='0' max='255' step='1' value='0' style='width: 200px;' onchange='onRed(event, this.value)'><br/></div> <br/>
-      <div style="color:green"><br/>Green <input type='range'  id='green-value' min='0' max='255' step='1' value='0' style='width: 200px;' onchange='onGreen(event, this.value)'><br/></div> <br/>
-      <div style="color:blue"><br/>Blue <input type='range'  id='blue-value' min='0' max='255' step='1' value='0' style='width: 200px;' onchange='onBlue(event, this.value)'><br/></div> <br/>
+      <div style="color:#fff"><br/>White <input type='range'  id='white-value' min='0' max='127' step='1' value='250' style='width: 200px;' onchange='onWhite(event, this.value)'><br/></div> <br/>
+      <div style="color:red"><br/>Red <input type='range'  id='red-value' min='0' max='255' step='1' value='150' style='width: 200px;' onchange='onRed(event, this.value)'><br/></div> <br/>
+      <div style="color:green"><br/>Green <input type='range'  id='green-value' min='0' max='255' step='1' value='90' style='width: 200px;' onchange='onGreen(event, this.value)'><br/></div> <br/>
+      <div style="color:blue"><br/>Blue <input type='range'  id='blue-value' min='0' max='255' step='1' value='10' style='width: 200px;' onchange='onBlue(event, this.value)'><br/></div> <br/>
 
-<div><br/>Delay <input type='range'  id='sped' min='2' max='12000' step='1' value='2000' style='width: 200px;' onchange='onSped(event, this.value)'><br/></div> <br/>
-<div><br/>Brillo <input type='range'  id='brighy' min='2' max='254' step='1' value='150' style='width: 200px;' onchange='onBrightness(event, this.value)'><br/></div> <br/>
+<div><br/>Delay <input type='range'  id='sped' min='2' max='12000' step='1' value='2900' style='width: 200px;' onchange='onSped(event, this.value)'><br/></div> <br/>
+<div><br/>Brillo <input type='range'  id='brighy' min='2' max='254' step='1' value='100' style='width: 200px;' onchange='onBrightness(event, this.value)'><br/></div> <br/>
       <div>
 
 
