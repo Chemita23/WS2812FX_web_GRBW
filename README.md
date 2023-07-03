@@ -1,5 +1,5 @@
 # WS2812FX_web_GRBW
-Web Interface for GRBW WS2812FX for Arduino, with range controls and 4 colors leds.
+<b>Web Interface for GRBW WS2812FX for Arduino, with range controls and 4 colors leds.</b>
 
 <br />The Web Interface works OK in Firefox and Mobiles. Open Console (F12) to see values.
 
