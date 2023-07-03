@@ -22,3 +22,5 @@ This code is based in the work of Harm Aldick https://github.com/kitesurfer1404/
 ![grbw_ws2812](https://github.com/Chemita23/WS2812FX_web_GRBW/assets/108198600/acbf943d-a319-4c2a-bee3-7d0f4af4eba8)
 
 Thanks and enjoy it...
+
+<b>Chema Mateos (Madrid, SPAIN) 2023</b>
