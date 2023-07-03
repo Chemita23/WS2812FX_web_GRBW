@@ -3,6 +3,7 @@ This code is adapted by Chema Mateos, Madrid 2023
 https://github.com/Chemita23/WS2812FX_web_GRBW
 Script is based in the work of Harm Aldick 
 code optimized for ESP32
+Put http://192.168.1.252 in your browser, or the IP that you configure below
 */
 
 #include <WS2812FX.h>
@@ -26,11 +27,11 @@ code optimized for ESP32
 extern const char index_html[];
 extern const char main_js[];
 int led = 2;
-#define WIFI_SSID "MOVISTAR_643A"
-#define WIFI_PASSWORD "Mateos23"
+#define WIFI_SSID "YOURSSID"  // Important change with your WiFi credentials
+#define WIFI_PASSWORD "YOURPASSW" // Important change with your WiFi credential
 
-#define STATIC_IP                       // uncomment for static IP, set IP below
-#ifdef STATIC_IP
+#define STATIC_IP   // uncomment for static IP, set IP below. Comment for DHCP
+#ifdef STATIC_IP   // Fill with your IP range and IP router
   IPAddress ip(192,168,1,252);
   IPAddress gateway(192,168,1,1);
   IPAddress subnet(255,255,255,0);
@@ -40,10 +41,10 @@ int led = 2;
 #define min(a,b) ((a)<(b)?(a):(b))
 #define max(a,b) ((a)>(b)?(a):(b))
 
-#define LED_PIN 23                       // ESP8266 = 14, 7 = GPIO13, 2=GPIO2
+#define LED_PIN 23   // ESP8266 = 14, 7 = GPIO13, 2=GPIO2
 #define LED_COUNT 117
 
-#define WIFI_TIMEOUT 40000              // checks WiFi every ...ms. Reset after this time, if WiFi cannot reconnect.
+#define WIFI_TIMEOUT 40000  // checks WiFi every ...ms. Reset after this time, if WiFi cannot reconnect.
 #define HTTP_PORT 80
 
 #define DEFAULT_COLOR 0xffcc5500
@@ -64,12 +65,9 @@ void setup(){
   Serial.begin(115200);
   delay(2000);
   Serial.println("\n\nStarting...");
-
-
   Serial.println("WS2812FX setup");
   ws2812fx.init();
   ws2812fx.setMode(FX_MODE_TRIFADE);
-  //ws2812fx.setMode(FX_MODE_MULTI_STROBE); 
   ws2812fx.setCustomMode(F("Rain"),rain);
   ws2812fx.setCustomMode(F("Popcorn"),popcorn);
   ws2812fx.setCustomMode(F("Heartbeat"),heartbeat);
@@ -107,11 +105,11 @@ void loop() {
     if(WiFi.status() != WL_CONNECTED) {
       Serial.println("WiFi connection lost. Reconnecting...");
       ws2812fx.setColor(DEFAULT_COLOR);
-      ws2812fx.setSpeed(616);      
+      ws2812fx.setSpeed(1500);      
       ws2812fx.setMode(FX_MODE_MULTI_STROBE);
       wifi_setup();
     } else {
-      Serial.println("OK");
+      Serial.println("WIFI OK");
     }
     last_wifi_check_time = now;
   }
@@ -137,26 +135,17 @@ void loop() {
  * Connect to WiFi. If no connection is made within WIFI_TIMEOUT, ESP gets resettet.
  */
 void wifi_setup() {
-  //digitalWrite(led, HIGH);   // turn the LED on (HIGH is the voltage level)
   Serial.println();
   Serial.print("Connecting to ");
   Serial.println(WIFI_SSID);
-
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
   WiFi.mode(WIFI_STA);
   #ifdef STATIC_IP  
     WiFi.config(ip, gateway, subnet);
   #endif
-
   unsigned long connect_start = millis();
   while(WiFi.status() != WL_CONNECTED) {
-    //delay(70);
-    //Serial.print(".");
     ws2812fx.service();
-    //digitalWrite(led, LOW);
-    //delay(20);
-    //digitalWrite(led, HIGH); 
-
     if(millis() - connect_start > WIFI_TIMEOUT) {
       Serial.println();
       Serial.print("Tried ");
@@ -179,10 +168,6 @@ void wifi_setup() {
   ws2812fx.service();
 }
 
-
-/*
- * Build <li> string for all modes.
- */
 void modes_setup() {
   modes = "";
   uint8_t num_modes = sizeof(myModes) > 0 ? sizeof(myModes) : ws2812fx.getModeCount();
@@ -238,8 +223,6 @@ void srv_handle_set() {
 
       Serial.print("brightness is "); Serial.println(ws2812fx.getBrightness());
     }
-
-  
 
         if(server.argName(i) == "x") {
         uint16_t tmp = (uint16_t) strtol(server.arg(i).c_str(), NULL, 10);
