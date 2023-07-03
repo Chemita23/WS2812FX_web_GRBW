@@ -1,3 +1,10 @@
+/*
+This code is adapted by Chema Mateos, Madrid 2023
+https://github.com/Chemita23/WS2812FX_web_GRBW
+Script is based in the work of Harm Aldick 
+code optimized for ESP32
+*/
+
 #include <WS2812FX.h>
 #include "rain.h"
 #include "Popcorn.h"
@@ -40,7 +47,7 @@ int led = 2;
 #define HTTP_PORT 80
 
 #define DEFAULT_COLOR 0xffcc5500
-#define DEFAULT_BRIGHTNESS 150
+#define DEFAULT_BRIGHTNESS 100
 #define DEFAULT_SPEED 2905
 #define DEFAULT_MODE FX_MODE_TWINKLE_FADE_RANDOM
 
@@ -69,7 +76,7 @@ void setup(){
   ws2812fx.setCustomMode(F("TriFade"),triFade);
   ws2812fx.setColor(DEFAULT_COLOR);
   ws2812fx.setSpeed(DEFAULT_SPEED);
-  ws2812fx.setBrightness(200);
+  ws2812fx.setBrightness(DEFAULT_BRIGHTNESS);
   ws2812fx.start();
   ws2812fx.service();
   delay(1500);
