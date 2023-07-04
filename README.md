@@ -1,11 +1,11 @@
 # WS2812FX_web_GRBW
-<b>Web Interface for GRBW WS2812FX for Arduino, with range controls and 4 colors leds.</b>
+<b>Web Interface for RGBW & GRBW Strips WS2812FX for Arduino, with range controls and 4 colors leds.</b>
 
 <br />The Web Interface works OK in Firefox and Mobiles. Open Console (F12) to see values.
 
 This code is optimized for ESP32, but works fine with ESP8266.
 
-Work with WS2812B GRBW (White & RGB) strips led
+Work with WS2812B GRBW, RGBW & RGB (White Red Gren Blue) Strips Led
 <br />
 Is mandatory the library WS2812FX
 
